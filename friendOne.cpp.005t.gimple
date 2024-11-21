@@ -1,0 +1,65 @@
+main ()
+{
+  int D.40030;
+
+  {
+    struct Sample s;
+
+    try
+      {
+        Sample::Sample (&s, 100);
+        Sample::disp (&s);
+        s.data = 200;
+        Sample::disp (&s);
+      }
+    finally
+      {
+        s = {CLOBBER};
+      }
+  }
+  D.40030 = 0;
+  return D.40030;
+}
+
+
+Sample::Sample (struct Sample * const this, int x)
+{
+  MEM[(struct  &)this] = {CLOBBER};
+  {
+    this->data = x;
+  }
+}
+
+
+Sample::disp (struct Sample * const this)
+{
+  _1 = std::operator<< <std::char_traits<char> > (&cout, "Data: ");
+  _2 = this->data;
+  _3 = std::basic_ostream<char>::operator<< (_1, _2);
+  std::basic_ostream<char>::operator<< (_3, endl);
+}
+
+
+__static_initialization_and_destruction_0 (int __initialize_p, int __priority)
+{
+  if (__initialize_p == 1) goto <D.40036>; else goto <D.40037>;
+  <D.40036>:
+  if (__priority == 65535) goto <D.40038>; else goto <D.40039>;
+  <D.40038>:
+  std::ios_base::Init::Init (&__ioinit);
+  __cxa_atexit (__dt_comp , &__ioinit, &__dso_handle);
+  goto <D.40040>;
+  <D.40039>:
+  <D.40040>:
+  goto <D.40041>;
+  <D.40037>:
+  <D.40041>:
+}
+
+
+_GLOBAL__sub_I_main ()
+{
+  __static_initialization_and_destruction_0 (1, 65535);
+}
+
+
